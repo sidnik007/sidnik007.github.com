@@ -1,38 +1,26 @@
 ---
 layout: post
 category : lessons
-tagline: "Supporting tagline"
 tags : [intro, beginner, jekyll, tutorial]
 ---
 {% include JB/setup %}
 
 This tutorial is meant for redirecting the console output which is printed when `System.out.println("Your text to be printed")` to a byte array.
 
-## Overview
 
-### What is Jekyll?
+### What could be the need of redirection
+Redirecting into an byte array could be neccessary for testing purpose, especially when it comes to legacy code. **Legacy code is the code that does not have test.** And when you are in agile environment, it is a serious crime to change the code without having a test for it. In case of legacy code, what we follow is Characterization test, where the existing output is stored in memory, and once you change a part of code, check if it matches to the stored output. In case of agile, the changes should be small, and the test run should be frequent. Also we follow the TDD approach which says that no production code is to be written unless you write a test that fails, and write only the code that will pass the test. So even in case of Legacy code, TDD approach could be followed. Suppose that the code that you are going to test prints some data on the console, then first store the expected data into a string, and then redirect the output to a byte array and compare the expected String with byte array data whenever to verify the changes. 
 
-Jekyll is a parsing engine bundled as a ruby gem used to build static websites from
-dynamic components such as templates, partials, liquid code, markdown, etc. Jekyll is known as "a simple, blog aware, static site generator".
+### How to redirect
+If you have a look at `System` class, (<http://docs.oracle.com/javase/8/docs/api/java/lang/System.html>) `out` is the standard output stream  and is of type `PrintStream`. In simple terms this `out` decides where the data is to be redirected. By default the data is redirected to the console, and by changing the the destination it could be redirected to the stream that you want. For that purpose `setOut` method is used, which takes `PrintStream` as a paramater.
 
-### Examples
+**NOTE** Though the `out` is `final`, and according to java when a field is declared `final`, it has to be assigned in declaration or in constructor. But in case of out though `final`, and no constructor is present, still it has a `setOut` method, which contradicts what `final` does. The reason here is because`setOut` if native method and `final` does not work on native methods.
 
-This website is created with Jekyll. [Other Jekyll websites](https://github.com/mojombo/jekyll/wiki/Sites).
+First we need to keep the value of default output stream as a backup. And for that we create a variable of type `PrintStream` and assign it the value of `System.out`.
 
-
-
-### What does Jekyll Do?
-
-Jekyll is a ruby gem you install on your local system.
-Once there you can call `jekyll --server` on a directory and provided that directory
-is setup in a way jekyll expects, it will do magic stuff like parse markdown/textile files,
-compute categories, tags, permalinks, and construct your pages from layout templates and partials.
-
-Once parsed, Jekyll stores the result in a self-contained static `_site` folder.
-The intention here is that you can serve all contents in this folder statically from a plain static web-server.
-
-You can think of Jekyll as a normalish dynamic blog but rather than parsing content, templates, and tags
-on each request, Jekyll does this once _beforehand_ and caches the _entire website_ in a folder for serving statically.
+{% highlight java %}
+PrintStream oldOut = System.out;
+{% endhighlight %}
 
 ### Jekyll is Not Blogging Software
 
