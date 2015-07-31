@@ -1,3 +1,4 @@
+---
 layout: post
 category : lessons
 tags : [kubuntu, wifi]
