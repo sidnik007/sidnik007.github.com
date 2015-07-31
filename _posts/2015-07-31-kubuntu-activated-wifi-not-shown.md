@@ -1,4 +1,4 @@
-yout: post
+layout: post
 category : lessons
 tags : [kubuntu, wifi]
 ---
