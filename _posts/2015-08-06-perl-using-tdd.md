@@ -1,4 +1,4 @@
----
+---l
 layout: post
 category : lessons
 tags : [tdd, perl]
@@ -62,3 +62,29 @@ You will get the following error
 Undefined subroutine &main::isPrime called at PrimeNumberTest.t line 5.
  Looks like your test exited with 255 before it could output anything.
 {% endhighlight %}
+
+This is the time to add the source file and function. Let the source file be called PrimeNumber.pm, and add following code in it
+
+{% highlight perl %}
+#!/usr/bin/perl
+
+sub isPrime(){
+return "Not prime";
+}
+
+1
+{% endhighlight %}
+
+Also in the test file that is PrimeNumberTest.t add the `use` command to use the PrimeNumber.pm as module. For those who don't know what `use` command does, it is similar as `import` command.
+The test file should look as follows
+
+{% highlight perl %}
+#!/usr/bin/perl
+
+use Test::Simple tests => 1;
+use PrimeNumber;
+
+ok(isPrime() eq "Not prime", "Is zero prime");
+{% endhighlight %}
+
+
