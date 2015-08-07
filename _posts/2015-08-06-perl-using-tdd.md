@@ -48,3 +48,17 @@ ok(actual testcase, testname)
 {% endhighlight %}
 
 In our case isPrime(0) is the function that we would be testing, and should return a string that should match "Not prime", depending on which our test will decide whether it passed or failed. Also we mention the test name as "Is zero prime" to help us understand what the testcase is doing. Remember keep the test, function names descriptive, rather then adding comment. 
+
+Now run the test, using the following command
+
+{% highlight perl %}
+perl PrimeNumberTest.t
+{% endhighlight %}
+
+You will get the following error
+
+{% highlight perl %}
+1..1
+Undefined subroutine &main::isPrime called at PrimeNumberTest.t line 5.
+ Looks like your test exited with 255 before it could output anything.
+{% endhighlight %}
