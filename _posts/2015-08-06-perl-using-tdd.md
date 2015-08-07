@@ -45,6 +45,6 @@ ok(isPrime(0) eq "Not prime", "Is zero prime");
 
 {% highlight perl %}
 ok(actual testcase, testname)
-(% endhighlight %}
+{% endhighlight %}
 
 In our case isPrime(0) is the function that we would be testing, and should return a string that should match "Not prime", depending on which our test will decide whether it passed or failed. Also we mention the test name as "Is zero prime" to help us understand what the testcase is doing. Remember keep the test, function names descriptive, rather then adding comment. 
