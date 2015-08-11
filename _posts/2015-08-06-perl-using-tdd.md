@@ -102,13 +102,13 @@ We see the test has passed. Consider the second test case, lets say for number 1
 {% highlight perl %}
 #!/usr/bin/perl
 
-use Test::Simple tests => 1;
+use Test::Simple tests => 2;
 
 ok(isPrime(0) eq "Not prime", "Is zero prime");
 ok(isPrime(2) eq "Prime", "Is two prime");
 {% endhighlight %}
 
-After running the test you will see the following failure
+Don't forget to add the test number `use Test::Simple tests => 2`.After running the test you will see the following failure
 
 {% highlight perl %}
 1..1
@@ -116,7 +116,6 @@ ok 1 - Is zero prime
 not ok 2 - Is two prime
 #   Failed test 'Is two prime'
 #   at PrimeNumberTest.t line 7.
-# Looks like you planned 1 test but ran 2.
 # Looks like you failed 1 test of 2 run.
 {% endhighlight %}
 
@@ -136,4 +135,99 @@ sub isPrime {
 1
 {% endhighlight %}
 
-That should pass your test. 
+That should pass your test.
+
+If we add test for number 3, that would be redundant, because the code above does take care of number 3. So lets go for number 4.
+
+{% highlight perl %}
+ok(isPrime(4) eq "Not prime", "Is three prime");
+{% endhighlight %}
+
+As expected the test should fail, and we should find a fix for that.
+
+If you fix the code in following way
+
+{% highlight perl %}
+sub isPrime {
+    $num = $_[0];
+    if($num < 2) {
+        return "Not prime";
+    } else {
+        if($num % 2 == 0) {
+            return "Not prime";
+        }
+        return "Prime";
+    }
+}
+1
+{% endhighlight %}
+
+We get following output
+
+{% highlight perl %}
+1..1
+ok 1 - Is zero prime
+not ok 2 - Is two prime
+#   Failed test 'Is two prime'
+#   at PrimeNumberTest.t line 7.
+ok 3 - Is four prime
+# Looks like you failed 1 test of 3 run.
+{% endhighlight %}
+
+You see the test passed for current scenario, that is for number 4, but it failed for the previous case, for number 2. The reason is quite simple as 2 % 2 is also equal to zero, and the code prints it is prime, but the main thing to observe here is that as we follow tdd, and we focus on fixing the current test, the failing previous test cases also allow you to keep the code in check.
+
+We fix the code and run the test to see the test passing.
+
+{% highlight perl %}
+sub isPrime {
+    $num = $_[0];
+    if($num < 2) {
+        return "Not prime";
+    } if($num == 2) {
+        return "Prime";
+    } if($num % 2 == 0) {
+        return "Not prime";
+    }
+    return "Prime";
+}
+1
+{% endhighlight %}
+
+There is no chance of refactoring the above code, so we move forward to the next test. This test will work for number 5, 6, 7, and 8. But the test will fail for number 9, so add that test case and check the result. For fixing this test case we need to also check if the number is divisible by 3, so let's add a loop. (I know its still early to add the loop, but now you have an overall idea of how the process should be, and also the example I am showing is far too simple, so I am skipping some part and directly going for the loop)
+
+{% highlight perl %}
+sub isPrime {
+    $num = $_[0];
+    if($num < 2) {
+        return "Not prime";
+    } if($num == 2) {
+        return "Prime";
+    }
+    for ($i = 2; $i < $num; $i = $i + 1) {
+        if($num % $i == 0) {
+            return "Not prime";
+        }
+    }
+    return "Prime";
+}
+1
+{% endhighlight %}
+
+This should pass the test. Now we see some scope for refactoring. In the loop we check for `$i < $num`, and if value of `$num` will be 2, then it would not satisfy the for condition and will exit the loop returning "Prime". So we can remove the check for `$num == 2`. The code will look as follows
+
+{% highlight perl %}
+sub isPrime {
+    $num = $_[0];
+    if($num < 2) {
+        return "Not prime";
+    }
+    for ($i = 2; $i < $num; $i = $i + 1) {
+        if($num % $i == 0) {
+            return "Not prime";
+        }
+    }
+    return "Prime";
+}
+1
+{% endhighlight %} 
+And here you go, the test passes! Now what we have is a test file, and a source file. If you change anything in the source code, you can always verify by using the test file. I also have no doubt that this code could be refactored further, but I am not an expert in Perl, and the whole idea was to show how TDD works in Perl, so no offence ;) 
