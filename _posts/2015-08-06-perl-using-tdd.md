@@ -215,7 +215,7 @@ sub isPrime {
 
 This should pass the test. Now we see some scope for refactoring. In the loop we check for `$i < $num`, and if value of `$num` will be 2, then it would not satisfy the for condition and will exit the loop returning "Prime". So we can remove the check for `$num == 2`. The code will look as follows
 
-{% highlight perl %}
+{% highlight Perl %}
 sub isPrime {
     $num = $_[0];
     if($num < 2) {
@@ -234,7 +234,7 @@ And here you go, the test passes! Now what we have is a test file, and a source 
 
 You can also use `prove` command on the command line to see the summary of the test. In our case it would print as follows
 
-{% highlight perl %}
+{% highlight Perl %}
 All tests successful.
 Files=1, Tests=4,  0 wallclock secs ( 0.03 usr  0.01 sys +  0.02 cusr  0.00 csys =  0.06 CPU)
 Result: PASS
