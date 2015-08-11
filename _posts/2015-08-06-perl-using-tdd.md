@@ -68,12 +68,15 @@ This is the time to add the source file and function. Let the source file be cal
 {% highlight perl %}
 #!/usr/bin/perl
 
-sub isPrime(){
-return "Not prime";
+sub isPrime {
+    $num = $_[0];
+    return "Not prime";
 }
 
 1
 {% endhighlight %}
+
+Note that we are just returning a string that is expected by the test, rather then having some logic to find the number is prime. According to TDD, strive for the simplest solution.
 
 Also in the test file that is PrimeNumberTest.t add the `use` command to use the PrimeNumber.pm as module. For those who don't know what `use` command does, it is similar as `import` command.
 The test file should look as follows
@@ -84,7 +87,53 @@ The test file should look as follows
 use Test::Simple tests => 1;
 use PrimeNumber;
 
-ok(isPrime() eq "Not prime", "Is zero prime");
+ok(isPrime(0) eq "Not prime", "Is zero prime");
 {% endhighlight %}
 
+Run the test again and you will see following output.
 
+{% highlight perl %}
+1..1
+ok 1 - Is zero prime
+{% endhighlight %}
+
+We see the test has passed. Consider the second test case, lets say for number 1. Number 1 is also not prime, so if we add the test case, this production code will be sufficient to pass this test as well. Hence we directly go for next scenerio, that is number 2, which is prime. 
+
+{% highlight perl %}
+#!/usr/bin/perl
+
+use Test::Simple tests => 1;
+
+ok(isPrime(0) eq "Not prime", "Is zero prime");
+ok(isPrime(2) eq "Prime", "Is two prime");
+{% endhighlight %}
+
+After running the test you will see the following failure
+
+{% highlight perl %}
+1..1
+ok 1 - Is zero prime
+not ok 2 - Is two prime
+#   Failed test 'Is two prime'
+#   at PrimeNumberTest.t line 7.
+# Looks like you planned 1 test but ran 2.
+# Looks like you failed 1 test of 2 run.
+{% endhighlight %}
+
+Now again we go for a simplest solution. 
+
+{% highlight perl %}
+#!/usr/bin/perl
+
+sub isPrime {
+    $num = $_[0];
+    if($num < 2) {
+        return "Not prime";
+    } else {
+        return "Prime";
+    }
+}
+1
+{% endhighlight %}
+
+That should pass your test. 
