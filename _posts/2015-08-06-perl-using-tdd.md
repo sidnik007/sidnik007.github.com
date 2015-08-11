@@ -230,4 +230,12 @@ sub isPrime {
 }
 1
 {% endhighlight %} 
-And here you go, the test passes! Now what we have is a test file, and a source file. If you change anything in the source code, you can always verify by using the test file. I also have no doubt that this code could be refactored further, but I am not an expert in Perl, and the whole idea was to show how TDD works in Perl, so no offence ;) 
+And here you go, the test passes! Now what we have is a test file, and a source file. If you change anything in the source code, you can always verify by using the test file. I also have no doubt that this code could be refactored further, but I am not an expert in Perl, and the whole idea was to show how TDD works in Perl, so no offence ;)
+
+You can also use `prove` command on the command line to see the summary of the test. In our case it would print as follows
+
+{% highlight perl %}
+All tests successful.
+Files=1, Tests=4,  0 wallclock secs ( 0.03 usr  0.01 sys +  0.02 cusr  0.00 csys =  0.06 CPU)
+Result: PASS
+{% endhighlight %} 
