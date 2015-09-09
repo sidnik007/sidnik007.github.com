@@ -14,7 +14,7 @@ Sometimes one target in the makefile calls many targets creating a chain of comm
 
 ###Executing the commands
 
-Also you can execute the command one by one on the console. Most of the times special macros are used in the makefile like `$@` or `$<`. It would be helpful if you get meaning of those but if you don't still you can understand what those macros and the command using the macros are doing. Run the makefile, or the target and make sure you do not use the `-s` option while running, or else nothing would be printed on console. This would then print the commands on console along with the substituted values of special variables. Once you have those commands, you again could try executing command one by one. If you dont know the command use `man` command to understand what the command does.
+If you dont understand what a certain commands are doing, you can execute the command one by one on the console. Most of the times special macros are used in the makefile like `$@` or `$<`. It would be helpful if you get meaning of those but if you don't still you can understand what those macros and the command using the macros are doing. Run the makefile, or the target and make sure you do not use the `-s` option while running, or else nothing would be printed on console. This would then print the commands on console along with the substituted values of special variables. Once you have those commands, you again could try executing command one by one. If you dont know the command use `man` command to understand what the command does.
 
 
 ###Printing the variables
