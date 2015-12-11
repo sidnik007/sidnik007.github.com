@@ -11,9 +11,9 @@ In this blog I will show different ways of handling the long chains of `if-else`
 A code should always follow **OCP**, i.e **Open Close Principle**. The code should be open for extension, but close for modification. Which means that whenever there is a new requirement, it should be possible to extend the code rather than modifying the existing one. And so long chains of `if-else` voilate OCP, as if you have to add another condition, you have to modidy the existing code, rather then extending it. 
 
 ### How could I avoid `if-else`?
-There are multiple ways to handle the long chains of `if-else`, here I will show one way using enums.
+There are multiple ways to handle the long chains of `if-else`, here I will show one way using `enum`.
 
-We will take a factory design pattern as an example. Consider the following example where the PizzaContentFactory returns contents of types of Pizza. An interface PizzaContent with only one method 'printPizzaContent()' will be implemented by different Pizza classes.
+We will take a factory design pattern as an example. Consider the following example where the PizzaContentFactory returns content of types of pizza. An interface PizzaContent with only one method 'printPizzaContent()' will be implemented by different pizza classes.
 
 {% highlight java %}
 public interface PizzaContent {
@@ -64,7 +64,7 @@ public class PizzaContentFactory {
 }
 {% endhighlight %}
 
-Also find the demo class needed to run the above program to see if is working
+Also find the demo class needed to run the above program to see if is working.
 
 {% highlight java %}
 public class PrintPizzaContentDemo {
@@ -80,7 +80,7 @@ public class PrintPizzaContentDemo {
 }
 {% endhighlight %}
 
-When you run the above program, it should print following
+When you run the above program, it should print following.
 
 {% highlight java %}
 Contains Cheese
@@ -88,9 +88,9 @@ Contains Chicken
 Contains Spicy Pineapple
 {% endhighlight %}
 
-We would be modifying the 'PizzaContentFactory' class. Right now if a new pizza content has to be added, then we have to modify the existing `if-else` in the code. So we use enums instead.
+We would be modifying the 'PizzaContentFactory' class. Right now if a new pizza content has to be added, then we have to modify the existing `if-else` in the code. So we use `enum` instead.
 
-Find below the enum class which contains the types of pizzas.
+Find below the `enum` class which contains the types of pizzas.
 
 {% highlight java %}
 public enum PizzaContentTypes {
@@ -141,5 +141,5 @@ public class PrintPizzaContentDemo {
 }
 {% endhighlight %}
 
-### But still when a new type is introduced, the enum has to be changed. Is that not modification?
-Yes! Enum changes everytime you add some pizza type. But there is a difference, and that is you are adding data, and not modifying the core logic. So the core logic stays untouched, data gets added, and everybody lives happily ever after!
+### But still when a new type is introduced, the `enum` has to be changed. Is that not modification?
+Yes! `enum` changes everytime you add some pizza type. It actually is a modification but it is so lightweight and trivial that it is easier than a polymorphic extension - add one line to an existing class compared to adding an entire class to the system. Also, it physically is a modification, but the addition of enumerated constants can be seen as extension on a logical level, because behavior of existing code isn't affected in this case., and everybody lives happily ever after!
