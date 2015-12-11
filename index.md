@@ -23,3 +23,7 @@ Following are few tips on reading or understanding a makefile and its flow. This
 #Fixing the aspect ratio of the image on website
 The images if not in correct aspect ratio on website, could look stretched. Following is the solution for the issue.
 [Read more](http://sidnik007.github.io/lessons/2015/09/11/maintain-aspect-ratio-of-images-on-website/)
+
+#Handling Long Chains Of If Else Solution 1
+In this blog I will show different ways of handling the long chains of if-else.
+[Read more](http://sidnik007.github.io/lessons/2015/12/11/handling-long-chains-of-if-else-solution-1/)
