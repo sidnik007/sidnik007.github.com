@@ -24,6 +24,10 @@ Following are few tips on reading or understanding a makefile and its flow. This
 The images if not in correct aspect ratio on website, could look stretched. Following is the solution for the issue.
 [Read more](http://sidnik007.github.io/lessons/2015/09/11/maintain-aspect-ratio-of-images-on-website/)
 
-#Handling Long Chains Of If Else Solution 1
+#Handling Long Chains Of If Else Solution Using Enum
 In this blog I will show different ways of handling the long chains of if-else.
-[Read more](http://sidnik007.github.io/lessons/2015/12/11/handling-long-chains-of-if-else-solution-1/)
+[Read more](http://sidnik007.github.io/lessons/2015/12/11/handling-long-chains-of-if-else-solution-using-enum/)
+
+#Handling Long Chains Of If Else Using Sorted Map
+In this blog I will show you how to handle a long chain of if-else using sorted map.
+[Read more](http://sidnik007.github.io/lessons/2015/12/14/handling-long-chains-of-if-else-using-sorted-map/)

@@ -5,7 +5,7 @@ tags : [redirection, java, System.out]
 ---
 {% include JB/setup %}
 
-In this blog I will show you how to handle a long chain of `if-else` using sorted map. To know why `if-else` chains shoud be replaced please refer to my previous blog. 
+In this blog I will show you how to handle a long chain of `if-else` using sorted map. To know why `if-else` chains shoud be replaced please refer to my previous blog [Handling Long Chains Of If Else Solution Using Enum](http://sidnik007.github.io/lessons/2015/12/11/handling-long-chains-of-if-else-solution-using-enum/) 
 
 ### When to use sorted map when replacing `if-else`?
 There are mutiple ways to handle chains of `if-else`, and which to use when completely depends on the situation. Sorted map could be used when the `if` checks are for greater/less then or equal to `if (x <= 10)`. In this case using enums would not be possible. Even the normal map would not be of any use. We need to store the data in sorted map only.
