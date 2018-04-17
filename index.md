@@ -31,3 +31,7 @@ In this blog I will show different ways of handling the long chains of if-else.
 # Handling Long Chains Of If Else Using Sorted Map
 In this blog I will show you how to handle a long chain of if-else using sorted map.
 [Read more](http://sidnik007.github.io/lessons/2015/12/14/handling-long-chains-of-if-else-using-sorted-map)
+
+# Get Rid of Pimples
+In this blog I will show you how to handle a long chain of if-else using sorted map.
+[Read more](http://sidnik007.github.io/lessons/2018/04/17/get-rid-of-pimples-instantly)
