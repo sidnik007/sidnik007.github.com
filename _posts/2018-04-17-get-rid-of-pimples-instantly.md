@@ -1,8 +1,6 @@
 ---
 layout: post
-title: "Get rid of pimples instantly"
-description: ""
-category: 
-tags: []
+category: lessons 
+tags: [Saau]
 ---
 {% include JB/setup %}
